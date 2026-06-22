@@ -1,15 +1,16 @@
 import Reveal from "./Reveal";
 import { LINKS, STILLWATER } from "../config";
 import { XIcon, TelegramIcon } from "./icons";
+import { withBase } from "../lib/paths";
 
 export default function Community() {
   return (
     <section id="stillwater" className="relative overflow-hidden py-24 sm:py-32">
       {/* ambient art wash */}
       <picture>
-        <source srcSet="/art/06-home.webp" type="image/webp" />
+        <source srcSet={withBase("/art/06-home.webp")} type="image/webp" />
         <img
-          src="/art/06-home.jpg"
+          src={withBase("/art/06-home.jpg")}
           alt=""
           aria-hidden
           className="absolute inset-0 h-full w-full object-cover opacity-20"

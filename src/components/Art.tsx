@@ -1,3 +1,5 @@
+import { withBase } from "../lib/paths";
+
 type Props = {
   /** Base path without extension, e.g. "/art/01-village". webp + jpg expected. */
   src: string;
@@ -6,13 +8,13 @@ type Props = {
   loading?: "lazy" | "eager";
 };
 
-/** <picture> with webp + jpg fallback. */
+/** <picture> with webp + jpg fallback. Paths are base-aware. */
 export default function Art({ src, alt, className, loading = "lazy" }: Props) {
   return (
     <picture>
-      <source srcSet={`${src}.webp`} type="image/webp" />
+      <source srcSet={withBase(`${src}.webp`)} type="image/webp" />
       <img
-        src={`${src}.jpg`}
+        src={withBase(`${src}.jpg`)}
         alt={alt}
         loading={loading}
         decoding="async"
