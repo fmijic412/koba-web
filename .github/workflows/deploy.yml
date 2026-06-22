@@ -35,10 +35,11 @@ jobs:
 
       - name: Build
         run: npm run build
-        # Using a custom domain (or root Pages), so base stays "/".
-        # For a project page (https://USER.github.io/koba-web/) instead, set:
+        # Default base is "/koba-web/" for the project page
+        # (https://USER.github.io/koba-web/). When you move to a custom domain
+        # or root Pages, build at the root instead by uncommenting:
         #   env:
-        #     VITE_BASE: /koba-web/
+        #     VITE_BASE: /
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

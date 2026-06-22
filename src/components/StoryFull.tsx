@@ -5,6 +5,7 @@ import Art from "./Art";
 import Reveal from "./Reveal";
 import { XIcon } from "./icons";
 import { EPISODES, publishedEpisodes } from "../data/episodes";
+import { withBase } from "../lib/paths";
 
 const toneText: Record<string, string> = {
   water: "text-water-light",
@@ -27,7 +28,7 @@ export default function StoryFull() {
         {/* Header */}
         <Reveal className="mx-auto mb-16 max-w-2xl text-center">
           <a
-            href="/#top"
+            href={withBase("/#top")}
             className="mb-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-slate-400 transition-colors hover:text-water-light"
           >
             <ArrowLeft size={16} /> Back home

@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react";
 import clsx from "clsx";
 import { LINKS, TOKEN } from "../config";
 import { XIcon, TelegramIcon } from "./icons";
+import { withBase } from "../lib/paths";
 
 // Section links use "/#id" so they work from any page (the Story page lives
 // at /story.html). The Story link points at the dedicated page.
@@ -36,9 +37,9 @@ export default function Nav() {
     >
       <nav className="container-koba flex h-16 items-center justify-between sm:h-20">
         {/* Logo */}
-        <a href="/#top" className="flex items-center gap-2.5 group">
+        <a href={withBase("/#top")} className="flex items-center gap-2.5 group">
           <img
-            src="/logo.svg"
+            src={withBase("/logo.svg")}
             alt={TOKEN.ticker}
             className="h-9 w-9 transition-transform group-hover:rotate-6 sm:h-11 sm:w-11"
           />
@@ -52,7 +53,7 @@ export default function Nav() {
           {NAV_LINKS.map((l) => (
             <a
               key={l.href}
-              href={l.href}
+              href={withBase(l.href)}
               className="text-sm font-semibold uppercase tracking-widest text-slate-300 transition-colors hover:text-water-light"
             >
               {l.label}
@@ -107,7 +108,7 @@ export default function Nav() {
             {NAV_LINKS.map((l) => (
               <a
                 key={l.href}
-                href={l.href}
+                href={withBase(l.href)}
                 onClick={() => setOpen(false)}
                 className="rounded-lg px-3 py-3 font-display uppercase tracking-widest text-slate-200 hover:bg-white/5 hover:text-water-light"
               >

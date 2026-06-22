@@ -96,10 +96,11 @@ A workflow at **`.github/workflows/deploy.yml`** builds and deploys on every pus
 3. Merge a PR to `master` (or run the workflow manually from the **Actions** tab).
    The site deploys to `https://<user>.github.io/koba-web/`.
 
-> **Project-page URL note:** at `…github.io/koba-web/` the app needs a sub-path base.
-> The workflow has a commented `VITE_BASE: /koba-web/` — uncomment it **only** if you
-> are NOT using a custom domain. With a custom domain (below) the default base `/` is
-> correct, so leave it commented.
+> **Base path:** the build defaults to `base: "/koba-web/"` so it works at the project
+> URL `https://<user>.github.io/koba-web/` out of the box. All in-app links and assets go
+> through `withBase()` (`src/lib/paths.ts`) so they respect it. When you move to a
+> **custom domain** (served from the root), build at the root by uncommenting
+> `VITE_BASE: /` in the workflow's Build step — nothing else changes.
 
 ---
 

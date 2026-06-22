@@ -2,15 +2,16 @@ import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import Countdown from "./Countdown";
 import { LINKS, TOKEN } from "../config";
+import { withBase } from "../lib/paths";
 
 export default function Hero() {
   return (
     <section id="top" className="relative min-h-[100svh] w-full overflow-hidden">
       {/* Background art */}
       <picture>
-        <source srcSet="/art/01-village.webp" type="image/webp" />
+        <source srcSet={withBase("/art/01-village.webp")} type="image/webp" />
         <img
-          src="/art/01-village.jpg"
+          src={withBase("/art/01-village.jpg")}
           alt="Koba's river village at dawn"
           className="absolute inset-0 h-full w-full object-cover"
         />
@@ -66,7 +67,7 @@ export default function Hero() {
             <a href={LINKS.pumpfun} target="_blank" rel="noopener noreferrer" className="btn-primary">
               Buy on pump.fun
             </a>
-            <a href="/story.html" className="btn-ghost">
+            <a href={withBase("/story.html")} className="btn-ghost">
               Read His Story
             </a>
           </div>

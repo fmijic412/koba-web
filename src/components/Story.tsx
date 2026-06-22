@@ -4,6 +4,7 @@ import { ArrowRight, BookOpen } from "lucide-react";
 import Art from "./Art";
 import Reveal from "./Reveal";
 import { EPISODES, publishedEpisodes } from "../data/episodes";
+import { withBase } from "../lib/paths";
 
 const toneText: Record<string, string> = {
   water: "text-water-light",
@@ -78,7 +79,7 @@ export default function Story() {
                 {released.map((e) => (
                   <a
                     key={e.num}
-                    href={`/story.html#ep-${e.num}`}
+                    href={withBase(`/story.html#ep-${e.num}`)}
                     className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-slate-300 transition-colors hover:border-water/40 hover:text-water-light"
                   >
                     <span className={clsx("font-display mr-1.5", toneText[e.tone])}>{e.roman}</span>
@@ -96,7 +97,7 @@ export default function Story() {
 
         {/* CTA to full saga */}
         <Reveal className="mt-12 text-center">
-          <a href="/story.html" className="btn-gold">
+          <a href={withBase("/story.html")} className="btn-gold">
             <BookOpen size={18} />
             Read the Full Saga
             <span className="opacity-70">
