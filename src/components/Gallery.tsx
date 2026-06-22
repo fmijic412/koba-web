@@ -1,16 +1,22 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import Art from "./Art";
 import Reveal from "./Reveal";
 import { publishedWithArt } from "../data/episodes";
+import { withBase } from "../lib/paths";
 
-// The gallery mirrors the released story — it grows as you publish episodes,
-// so it never spoils art ahead of your X posts.
-const IMAGES = publishedWithArt().map((e) => ({
-  src: e.img as string,
-  alt: `${e.roman} — ${e.title}`,
-}));
+// The home gallery is a teaser, not the full archive: it shows the most recent
+// frames (newest first) and links to the Story page, which holds every released
+// episode's art inline. This keeps the home section short as the saga grows
+// toward 25 episodes. It still mirrors the released story, so it never spoils
+// art ahead of your X posts.
+const GALLERY_LIMIT = 8;
+const ALL_ART = publishedWithArt();
+const IMAGES = ALL_ART.slice(-GALLERY_LIMIT)
+  .reverse()
+  .map((e) => ({ src: e.img as string, alt: `${e.roman} — ${e.title}` }));
+const HAS_MORE = ALL_ART.length > IMAGES.length;
 
 export default function Gallery() {
   const [open, setOpen] = useState<number | null>(null);
@@ -65,6 +71,22 @@ export default function Gallery() {
             </Reveal>
           ))}
         </div>
+
+        {/* The full visual archive lives on the Story page. */}
+        <Reveal className="mt-12 text-center">
+          {HAS_MORE && (
+            <p className="mb-4 text-sm text-slate-400">
+              Showing the latest {IMAGES.length} — {ALL_ART.length} frames in the full saga.
+            </p>
+          )}
+          <a
+            href={withBase("/story.html")}
+            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold uppercase tracking-wider text-slate-200 transition-colors hover:border-water/50 hover:text-water-light"
+          >
+            {HAS_MORE ? `See all ${ALL_ART.length} frames` : "Read the full saga"}
+            <ArrowRight size={16} />
+          </a>
+        </Reveal>
       </div>
 
       {/* Lightbox */}
