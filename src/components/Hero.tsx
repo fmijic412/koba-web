@@ -66,7 +66,7 @@ export default function Hero() {
             <a href={LINKS.pumpfun} target="_blank" rel="noopener noreferrer" className="btn-primary">
               Buy on pump.fun
             </a>
-            <a href="#story" className="btn-ghost">
+            <a href="/story.html" className="btn-ghost">
               Read His Story
             </a>
           </div>

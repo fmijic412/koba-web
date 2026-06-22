@@ -1,12 +1,13 @@
 import { LINKS, TOKEN } from "../config";
 import { XIcon, TelegramIcon } from "./icons";
+import CopyContract from "./CopyContract";
 
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-ink-950 py-12">
       <div className="container-koba">
         <div className="flex flex-col items-center gap-6 text-center">
-          <a href="#top" className="flex items-center gap-2.5">
+          <a href="/#top" className="flex items-center gap-2.5">
             <img src="/logo.svg" alt={TOKEN.ticker} className="h-10 w-10" />
             <span className="font-display text-2xl uppercase tracking-wider text-white">
               SOL<span className="text-gradient">KOBA</span>
@@ -16,6 +17,8 @@ export default function Footer() {
           <p className="max-w-md font-jp text-lg text-gold-light/80">
             静水流深 — Still water runs deep.
           </p>
+
+          <CopyContract compact />
 
           <div className="flex items-center gap-3">
             <a
