@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "koba-dev",
+      "runtimeExecutable": "wsl",
+      "runtimeArgs": ["-d", "Ubuntu", "--", "bash", "/opt/projects/koba-web/.tooling/dev.sh"],
+      "port": 5173
+    },
+    {
+      "name": "koba-preview",
+      "runtimeExecutable": "wsl",
+      "runtimeArgs": ["-d", "Ubuntu", "--", "bash", "/opt/projects/koba-web/.tooling/preview.sh"],
+      "port": 4173
+    }
+  ]
+}

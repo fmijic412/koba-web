@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* offset anchor jumps for the sticky nav */
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-ink-950 text-slate-200 font-body antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    @apply bg-water/30 text-white;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-ink-900;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-water-deep/60 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-water/60;
+  }
+}
+
+@layer components {
+  .container-koba {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+
+  .display {
+    @apply font-display uppercase tracking-wide;
+  }
+
+  /* Gradient text — water → gold */
+  .text-gradient {
+    @apply bg-gradient-to-r from-water-light via-water to-gold bg-clip-text text-transparent;
+  }
+
+  .text-gradient-fire {
+    @apply bg-gradient-to-r from-gold-light via-rage-light to-rage bg-clip-text text-transparent;
+  }
+
+  /* Primary CTA button */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-water to-water-glow px-7 py-3.5 font-display uppercase tracking-widest text-ink-950 shadow-glow transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_55px_-6px_rgba(56,189,248,0.7)] active:scale-95;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-gold-light to-gold px-7 py-3.5 font-display uppercase tracking-widest text-ink-950 shadow-glow-gold transition-all duration-300 hover:scale-[1.03] active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-water/40 bg-white/5 px-7 py-3.5 font-display uppercase tracking-widest text-water-light backdrop-blur transition-all duration-300 hover:border-water hover:bg-water/10 hover:text-white active:scale-95;
+  }
+
+  /* Frosted glass card */
+  .glass {
+    @apply rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md;
+  }
+
+  .section-label {
+    @apply font-display text-sm uppercase tracking-[0.35em] text-water;
+  }
+}
+
+/* Soft grain/vignette helper layered over hero art */
+.vignette {
+  background: radial-gradient(
+      120% 90% at 50% 0%,
+      transparent 0%,
+      rgba(5, 8, 13, 0.2) 55%,
+      rgba(5, 8, 13, 0.95) 100%
+    ),
+    linear-gradient(to bottom, rgba(5, 8, 13, 0.35), rgba(5, 8, 13, 0.6));
+}
+
+/* Faint flowing-water background texture for dark sections */
+.water-grid {
+  background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(45, 212, 191, 0.08) 1px,
+      transparent 0
+    );
+  background-size: 26px 26px;
+}
