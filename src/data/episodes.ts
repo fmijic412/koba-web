@@ -90,7 +90,7 @@ export const EPISODES: Episode[] = [
     img: "/art/05-rescue",
     xUrl: "",
     tone: "gold",
-    published: false,
+    published: true,
   },
   {
     num: 6,
