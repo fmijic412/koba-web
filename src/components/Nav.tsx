@@ -4,12 +4,14 @@ import clsx from "clsx";
 import { LINKS, TOKEN } from "../config";
 import { XIcon, TelegramIcon } from "./icons";
 
+// Section links use "/#id" so they work from any page (the Story page lives
+// at /story.html). The Story link points at the dedicated page.
 const NAV_LINKS = [
-  { label: "Story", href: "#story" },
-  { label: "Tokenomics", href: "#tokenomics" },
-  { label: "How to Buy", href: "#buy" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Stillwater", href: "#stillwater" },
+  { label: "Story", href: "/story.html" },
+  { label: "Tokenomics", href: "/#tokenomics" },
+  { label: "How to Buy", href: "/#buy" },
+  { label: "Gallery", href: "/#gallery" },
+  { label: "Stillwater", href: "/#stillwater" },
 ];
 
 export default function Nav() {
@@ -34,7 +36,7 @@ export default function Nav() {
     >
       <nav className="container-koba flex h-16 items-center justify-between sm:h-20">
         {/* Logo */}
-        <a href="#top" className="flex items-center gap-2.5 group">
+        <a href="/#top" className="flex items-center gap-2.5 group">
           <img
             src="/logo.svg"
             alt={TOKEN.ticker}

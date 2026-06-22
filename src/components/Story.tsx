@@ -1,89 +1,125 @@
 import clsx from "clsx";
 import { motion } from "framer-motion";
+import { ArrowRight, BookOpen } from "lucide-react";
 import Art from "./Art";
 import Reveal from "./Reveal";
-import { STORY } from "../config";
-
-const toneRing: Record<string, string> = {
-  water: "shadow-glow ring-water/30",
-  rage: "shadow-ember ring-rage/30",
-  gold: "shadow-glow-gold ring-gold/30",
-};
+import { EPISODES, publishedEpisodes } from "../data/episodes";
 
 const toneText: Record<string, string> = {
   water: "text-water-light",
   rage: "text-rage-light",
   gold: "text-gold-light",
 };
+const toneRing: Record<string, string> = {
+  water: "shadow-glow ring-water/30",
+  rage: "shadow-ember ring-rage/30",
+  gold: "shadow-glow-gold ring-gold/30",
+};
 
+/** Home-page teaser: the latest released episode + the running list, linking to the full saga. */
 export default function Story() {
+  const released = publishedEpisodes();
+  const total = EPISODES.length;
+  const latest = released[released.length - 1];
+
   return (
     <section id="story" className="water-grid relative py-24 sm:py-32">
       <div className="container-koba">
-        <Reveal className="mx-auto mb-16 max-w-2xl text-center">
+        <Reveal className="mx-auto mb-14 max-w-2xl text-center">
           <p className="section-label">The Legend of Koba</p>
           <h2 className="display mt-3 text-4xl text-white sm:text-6xl">
             From the <span className="text-gradient-fire">Fire</span>, a{" "}
             <span className="text-gradient">Stillness</span>
           </h2>
           <p className="mt-5 text-slate-400">
-            One night the Frenzy took everything. What the river carried away came
-            back as something the rage could never touch.
+            The saga unfolds episode by episode, in step with X. New chapters drop
+            as the river carries Koba forward.
           </p>
         </Reveal>
 
-        <div className="flex flex-col gap-20 sm:gap-28">
-          {STORY.map((beat, i) => {
-            const flip = i % 2 === 1;
-            return (
-              <div
-                key={beat.id}
-                className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14"
-              >
-                {/* Image */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.94, x: flip ? 40 : -40 }}
-                  whileInView={{ opacity: 1, scale: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                  className={clsx("group relative", flip && "lg:order-2")}
-                >
-                  <div
-                    className={clsx(
-                      "overflow-hidden rounded-2xl ring-1 ring-inset",
-                      toneRing[beat.tone],
-                    )}
+        {latest ? (
+          <>
+            {/* Latest released episode — featured */}
+            <Reveal className="mx-auto max-w-5xl">
+              <div className="glass overflow-hidden lg:grid lg:grid-cols-2">
+                {latest.img && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.96 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7 }}
+                    className={clsx("ring-1 ring-inset", toneRing[latest.tone])}
                   >
                     <Art
-                      src={beat.img}
-                      alt={beat.title}
-                      className="aspect-[16/9] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                      src={latest.img}
+                      alt={latest.title}
+                      loading="eager"
+                      className="aspect-[16/10] h-full w-full object-cover"
                     />
-                  </div>
-                </motion.div>
-
-                {/* Copy */}
-                <Reveal className={clsx(flip && "lg:order-1")} delay={0.1}>
-                  <p
-                    className={clsx(
-                      "font-display text-sm uppercase tracking-[0.3em]",
-                      toneText[beat.tone],
-                    )}
-                  >
-                    {beat.kicker}
+                  </motion.div>
+                )}
+                <div className="flex flex-col justify-center p-7 sm:p-10">
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
+                    Latest Episode
                   </p>
-                  <h3 className="mt-3 font-display text-3xl uppercase leading-tight text-white sm:text-4xl">
-                    {beat.title}
-                  </h3>
-                  <p className="mt-4 text-lg leading-relaxed text-slate-300/90">
-                    {beat.body}
+                  <p className={clsx("mt-2 font-display text-sm uppercase tracking-[0.3em]", toneText[latest.tone])}>
+                    {latest.roman} — {latest.title}
                   </p>
-                </Reveal>
+                  <p className="mt-4 text-lg leading-relaxed text-slate-200/90">
+                    {latest.body}
+                  </p>
+                </div>
               </div>
-            );
-          })}
-        </div>
+            </Reveal>
+
+            {/* Running episode list */}
+            <Reveal className="mx-auto mt-8 max-w-5xl">
+              <div className="flex flex-wrap justify-center gap-2.5">
+                {released.map((e) => (
+                  <a
+                    key={e.num}
+                    href={`/story.html#ep-${e.num}`}
+                    className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-slate-300 transition-colors hover:border-water/40 hover:text-water-light"
+                  >
+                    <span className={clsx("font-display mr-1.5", toneText[e.tone])}>{e.roman}</span>
+                    {e.title}
+                  </a>
+                ))}
+              </div>
+            </Reveal>
+          </>
+        ) : (
+          <Reveal className="mx-auto max-w-xl text-center text-slate-400">
+            The first episode drops soon. Follow on X to read it the moment it's posted.
+          </Reveal>
+        )}
+
+        {/* CTA to full saga */}
+        <Reveal className="mt-12 text-center">
+          <a href="/story.html" className="btn-gold">
+            <BookOpen size={18} />
+            Read the Full Saga
+            <span className="opacity-70">
+              ({latest ? latest.roman : "0"} of {toRoman(total)})
+            </span>
+            <ArrowRight size={18} />
+          </a>
+        </Reveal>
       </div>
     </section>
   );
+}
+
+function toRoman(n: number): string {
+  const map: [number, string][] = [
+    [10, "X"], [9, "IX"], [5, "V"], [4, "IV"], [1, "I"],
+  ];
+  let out = "";
+  for (const [v, s] of map) {
+    while (n >= v) {
+      out += s;
+      n -= v;
+    }
+  }
+  return out;
 }

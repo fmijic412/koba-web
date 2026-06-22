@@ -3,16 +3,14 @@ import { AnimatePresence, motion } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import Art from "./Art";
 import Reveal from "./Reveal";
+import { publishedWithArt } from "../data/episodes";
 
-const IMAGES = [
-  { src: "/art/01-village", alt: "The quiet bend — Koba's river village" },
-  { src: "/art/02-frenzy", alt: "The night the Frenzy came" },
-  { src: "/art/03-sacrifice", alt: "Their last gift" },
-  { src: "/art/04-river", alt: "Carried by the river" },
-  { src: "/art/05-rescue", alt: "The hand at the water — Master Tama" },
-  { src: "/art/06-home", alt: "A name and a home" },
-  { src: "/art/07-grief", alt: "Grief grows loud" },
-];
+// The gallery mirrors the released story — it grows as you publish episodes,
+// so it never spoils art ahead of your X posts.
+const IMAGES = publishedWithArt().map((e) => ({
+  src: e.img as string,
+  alt: `${e.roman} — ${e.title}`,
+}));
 
 export default function Gallery() {
   const [open, setOpen] = useState<number | null>(null);
@@ -35,6 +33,8 @@ export default function Gallery() {
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  if (IMAGES.length === 0) return null;
 
   return (
     <section id="gallery" className="relative py-24 sm:py-32">

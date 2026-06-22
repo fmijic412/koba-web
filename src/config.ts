@@ -42,66 +42,6 @@ export const TOKENOMICS = [
   { label: "Launch", value: "Fair", sub: "100% on pump.fun" },
 ] as const;
 
-/** The Koba saga — condensed for the scroll narrative. Images live in /public/art. */
-export const STORY = [
-  {
-    id: "peace",
-    kicker: "I — The Quiet Bend",
-    title: "Before the blade, there was peace.",
-    body: "A gentle bend in the great river, where a family of capybaras lived without fear. This is where it all began.",
-    img: "/art/01-village",
-    tone: "water",
-  },
-  {
-    id: "frenzy",
-    kicker: "II — The Night It Came",
-    title: "Then the Frenzy came.",
-    body: "A sickness swept the valley like wildfire, turning calm creatures into screaming monsters fed by their own rage. Everything changed in a single night.",
-    img: "/art/02-frenzy",
-    tone: "rage",
-  },
-  {
-    id: "sacrifice",
-    kicker: "III — Their Last Gift",
-    title: "His parents held back the fire.",
-    body: "In their final act they set their infant son adrift on the river, trusting the current to carry him where the flames couldn't follow.",
-    img: "/art/03-sacrifice",
-    tone: "water",
-  },
-  {
-    id: "river",
-    kicker: "IV — Carried by the River",
-    title: "The river had him now.",
-    body: "Alone and too small to understand what he'd lost, the pup floated downstream into the dark. It wasn't finished with him yet.",
-    img: "/art/04-river",
-    tone: "water",
-  },
-  {
-    id: "rescue",
-    kicker: "V — The Hand at the Water",
-    title: "Master Tama found him.",
-    body: "An old hermit knelt at the shallows and lifted the half-drowned pup from the water. He saw a stillness the Frenzy had failed to break — and gave the child a name: Koba.",
-    img: "/art/05-rescue",
-    tone: "gold",
-  },
-  {
-    id: "grief",
-    kicker: "VI — Grief Grows Loud",
-    title: "Loss grows loud in a young heart.",
-    body: "For years Koba was restless and angry, haunted by a fire he could barely remember. Rage was exactly what the sickness ate.",
-    img: "/art/07-grief",
-    tone: "rage",
-  },
-  {
-    id: "stillness",
-    kicker: "VII — Still Water Cuts Deepest",
-    title: "Stillness makes you deadly.",
-    body: "Standing in a waterfall at dawn, Koba stopped fighting the water. “Rage makes you loud,” Tama told him. “Still water cuts deepest.” His calm was the one weapon the Frenzy could never eat.",
-    img: "/art/06-home",
-    tone: "gold",
-  },
-] as const;
-
 /** The crew Koba pulled back from the rage, one by one. */
 export const STILLWATER = [
   { name: "Koba", role: "The Ronin", emoji: "🗡️", desc: "Calm at the center of every storm." },
