@@ -18,8 +18,7 @@ Everything tunable lives in **`src/config.ts`**:
       the site shows *"Revealed at launch"* and the copy button is disabled. Paste the
       address and the copy button + live market stats turn on automatically.
 - [ ] **pump.fun link** — point `LINKS.pumpfun` at the exact token page.
-- [ ] **Launch time** — confirm `LAUNCH_ISO` (`2026-06-24T15:00:00Z`). ⚠️ The source
-      story PDF mentioned other times (7PM / 9AM UTC); **15:00 UTC** is used per the brief.
+- [ ] **Launch time** — confirm `LAUNCH_ISO` (`2026-06-24T15:00:00Z`).
 - [ ] **Tokenomics** — confirm the static numbers in `TOKENOMICS` (see "Tokenomics" below).
 - [ ] **Logo** — replace `public/logo.svg` + `public/favicon.svg` with the official mark.
 - [ ] **Socials** — `LINKS.twitter` / `LINKS.telegram` (currently `x.com/sol_koba`,
