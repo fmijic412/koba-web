@@ -8,8 +8,12 @@ import HowToBuy from "../components/HowToBuy";
 import Gallery from "../components/Gallery";
 import Community from "../components/Community";
 import Footer from "../components/Footer";
+import { useHashScroll } from "../hooks/useHashScroll";
 
 export default function Home() {
+  // Land on the right section when arriving at /#section from another page.
+  useHashScroll();
+
   return (
     <>
       <Nav />
