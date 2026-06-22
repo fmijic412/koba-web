@@ -1,9 +1,9 @@
 name: Deploy to GitHub Pages
 
-# Runs on every push to master — i.e. whenever a PR is merged.
+# Runs on every push to main — i.e. whenever a PR is merged.
 on:
   push:
-    branches: [master]
+    branches: [main]
   workflow_dispatch: # allow manual runs from the Actions tab
 
 # Permissions the GitHub Pages deployment needs.
@@ -35,11 +35,10 @@ jobs:
 
       - name: Build
         run: npm run build
-        # Default base is "/koba-web/" for the project page
-        # (https://USER.github.io/koba-web/). When you move to a custom domain
-        # or root Pages, build at the root instead by uncommenting:
-        #   env:
-        #     VITE_BASE: /
+        # Served from the custom domain (solkoba.xyz) at the root, so build
+        # with base "/" instead of the project-page default "/koba-web/".
+        env:
+          VITE_BASE: /
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
