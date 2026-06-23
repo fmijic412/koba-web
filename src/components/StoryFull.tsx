@@ -56,7 +56,7 @@ export default function StoryFull() {
                 <article
                   key={e.num}
                   id={`ep-${e.num}`}
-                  className="grid scroll-mt-28 items-center gap-8 lg:grid-cols-2 lg:gap-12"
+                  className="grid scroll-mt-8 items-center gap-8 lg:grid-cols-2 lg:gap-12"
                 >
                   {e.img ? (
                     <motion.div
