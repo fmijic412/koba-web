@@ -24,15 +24,15 @@ export const LAUNCH_ISO = "2026-06-24T15:00:00Z";
  * Contract address. Leave empty until mint — the UI shows
  * "Revealed at launch" and disables copy when this is empty.
  */
-export const CONTRACT_ADDRESS = "";
+export const CONTRACT_ADDRESS = "6ThHME5Bt9WUQwJpEPWAwdJ7pRdaaNhnhizRN3zPpump";
 
 export const LINKS = {
   twitter: "https://x.com/sol_koba",
   telegram: "https://t.me/koba_group",
   /** Update to the exact token page at launch. */
-  pumpfun: "https://pump.fun",
+  pumpfun: "https://pump.fun/coin/6ThHME5Bt9WUQwJpEPWAwdJ7pRdaaNhnhizRN3zPpump",
   /** Optional — fill in after a pool exists. */
-  dexscreener: "",
+  dexscreener: "https://dexscreener.com/solana/9vk64h7trgxtrxaxuqqtppejudykxg1octgnwc6zd2rb",
 } as const;
 
 export const TOKENOMICS = [
